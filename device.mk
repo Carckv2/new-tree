@@ -17,7 +17,7 @@
 DEVICE_PATH := device/realme/spaced
 
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
@@ -27,7 +27,7 @@ $(call inherit-product-if-exists, packages/apps/RealmeParts/parts.mk)
 
 # VNDK
 PRODUCT_EXTRA_VNDK_VERSIONS := 30
-
+# Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 30
 
 # Dynamic Partition
@@ -57,10 +57,6 @@ PRODUCT_COPY_FILES += \
 # Freeform Multiwindow
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml
-
-# GCam
-PRODUCT_PACKAGES += \
-    GoogleCameraGo
 
 # HIDL
 PRODUCT_PACKAGES += \
